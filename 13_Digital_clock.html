@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title>Digital Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 2rem;
+    background-color: #e1c9c9;
+    font-family: sans-serif;
+
+    }
+
+    h1 {
+      color: blue;
+    }
+
+    h2 {
+      color: blue;
+   
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Digital Clock</h1>
+  <h2 id="dc"></h2>
+
+</body>
+<script>
+  function showtime() {
+    let date = new Date();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
+
+    let sesson = "AM";
+
+    if (h > 12) {
+      h -= 12;
+      sesson = "PM"
+    }
+
+    if (h == 0) {
+      h = 12;
+      sesson = "AM";
+    }
+    //   if(h<10)
+    //   h="0"+h;
+    //   if(m<10)
+    //   m="0"+m;
+    //   if(s<10)
+    //   s="0"+s;
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+
+    let time = h + ":" + m + ":" + s + " " + sesson;
+    document.getElementById("dc").innerHTML = time;
+    setTimeout(showtime, 1000);
+
+
+  }
+  showtime();
+</script>
+
+</html>
